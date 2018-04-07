@@ -1,0 +1,26 @@
+{
+  "name": "signage-scroll",
+  "version": "0.0.1",
+  "description": "Automated CSS3 transition based scrolling of content, designed for digital signage. Scrolls by performing CSS transition of margin-top.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-all": "npm run build && npm run build-debug && npm run mini",
+    "build-debug": "browserify index.js -t babelify -s Scroll -o build/signage-scroll.debug.js -v -d",
+    "build": "browserify index.js -t babelify -s SignageScroll -o build/signage-scroll.js -v",
+    "watch": "watchify index.js -t babelify -s SignageScroll -o build/signage-scroll.js -v",
+    "serve": "browser-sync start --server --index demo/index.html --files demo/* *.js build/*",
+    "mini": "uglifyjs build/signage-scroll.js -o build/signage-scroll.min.js"
+  },
+  "author": "Andy Gock <andy@agock.com> (https://agock.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babelify": "^8.0.0",
+    "browserify": "^16.1.1",
+    "browsersync": "0.0.1-security",
+    "uglify-js": "^3.3.16",
+    "watchify": "^3.11.0"
+  }
+}
